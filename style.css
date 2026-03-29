@@ -1,0 +1,598 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600&display=swap');
+
+/* Reset */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+min-height: 100vh;
+font-family: 'Montserrat', sans-serif;
+background: #fcf8f5;
+color: #1a1a1a;
+overflow-x: hidden;
+overflow-y: auto; /* <--- Change this from hidden to auto */
+}
+
+body.about-page {
+overflow-y: auto;
+height: auto;
+scroll-behavior: smooth;
+background: #fcf8f5;
+/* Changed to match the light theme */
+}
+
+/* HEADER */
+.header {
+position: relative;
+z-index: 5;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 15px 40px;
+background-color: rgba(170, 158, 152, 0.85);
+}
+
+/* Logo */
+.header .logo {
+font-family: 'Playfair Display', serif;
+font-size: 28px;
+letter-spacing: 1px;
+color: white;
+/* White looks good on the taupe header */
+text-decoration: none;
+position: relative;
+display: inline-block;
+padding-bottom: 6px;
+transition: transform 0.3s ease;
+}
+
+/* Underline */
+.header .logo::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0%;
+height: 2px;
+background: white;
+transition: width 0.3s ease;
+}
+
+/* Star */
+.header .logo::before {
+content: "✦";
+position: absolute;
+right: -16px;
+bottom: -6px;
+font-size: 14px;
+color: white;
+opacity: 0;
+transform: scale(0.5);
+transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Logo hover */
+.header .logo:hover {
+transform: scale(1.08) rotate(-1deg);
+}
+
+.header .logo:hover::after {
+width: 100%;
+}
+
+.header .logo:hover::before {
+opacity: 1;
+transform: scale(1);
+}
+
+/* Right links */
+.header-right {
+display: flex;
+gap: 30px;
+}
+
+.header a {
+color: white;
+text-decoration: none;
+font-size: 18px;
+position: relative;
+padding-bottom: 5px;
+}
+
+.header a::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0%;
+height: 2px;
+background: white;
+transition: width 0.3s ease;
+}
+
+.header a:hover::after,
+.header a.active::after {
+width: 100%;
+}
+
+/* HERO SECTION */
+.hero {
+flex: 1;
+display: flex;
+align-items: center;
+/* Centers the text and image vertically */
+justify-content: center;
+/* Centers them horizontally */
+gap: 200px;
+/* Space between text and image */
+padding: 60px 60px 120px 60px;
+/* Reduced top padding to 60px, added 120px bottom padding to protect social icons */
+min-height: 85vh;
+/* Tells the container to take up most of the screen so it can find the true middle */
+position: relative;
+z-index: 2;
+}
+
+.hero-text {
+max-width: 500px;
+/* Slightly tightened the text width to balance with the image */
+color: #1a1a1a;
+}
+
+.hero-text h1 {
+font-family: 'Playfair Display', serif;
+font-size: 48px;
+margin-bottom: 40px;
+font-weight: 400;
+}
+
+.hero-text p {
+font-size: 20px;
+line-height: 1.6;
+margin-bottom: 40px;
+}
+
+.hero-text button {
+padding: 15px 30px;
+font-size: 16px;
+border-radius: 30px;
+background: transparent;
+color: #b5a499; /* Change to Taupe */
+border: 2px solid #b5a499; /* Change to Taupe */
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.hero-text button:hover {
+background: #b5a499; /* Fill with Taupe on hover */
+color: #fcf8f5; /* White text on hover */
+}
+
+/* Images */
+.hero-image {
+position: relative;
+}
+
+.main-image {
+width: 100%;
+max-width: 380px;
+/* Shrunk the max-width slightly so it doesn't get too tall on large screens */
+height: auto;
+border-radius: 40px;
+z-index: 2;
+}
+
+/* =========================
+ALL ABOUT PAGE BOXES
+========================= */
+.about-hero,
+.about-extra {
+display: flex;
+flex-direction: column;
+justify-content: center; /* Vertically centers content inside the box */
+align-items: center; /* Horizontally centers content inside the box */
+gap: 60px;
+padding: 80px 60px;
+/* --- THE MAGIC LOCK --- */
+width: 90%; /* Changed to 90% to prevent touching screen edges on mobile */
+max-width: 1200px;
+margin: 6vh auto; /* This pushes the box down so it sits closer to the true vertical middle */
+border: 2px solid #1a1a1a;
+border-radius: 30px;
+min-height: 600px;
+color: #1a1a1a;
+box-sizing: border-box; /* Ensures padding doesn't break the width */
+}
+
+.about-hero .hero-text {
+text-align: center; /* Centers the text lines */
+max-width: 500px;
+/* margin: 0 auto; */ /* Optional now, as Flexbox parent handles this */
+}
+
+.about-hero .hero-text h1 {
+font-family: 'Playfair Display', serif;
+font-size: 36px;
+margin-bottom: 30px;
+font-weight: 400;
+}
+
+.about-hero .hero-text p {
+font-size: 18px;
+line-height: 1.6;
+margin-bottom: 20px;
+}
+
+/* =========================
+FOOTER (Centered)
+========================= */
+.site-footer {
+width: 100%; /* Ensures the footer spans the full width */
+text-align: center; /* Centers the text */
+padding: 80px 20px; /* Adds plenty of space at the bottom */
+margin-top: 40px;
+font-family: 'Playfair Display', serif;
+font-size: 18px;
+color: #1a1a1a; /* Matches your Taupe brand color */
+opacity: 0.8;
+clear: both; /* Pushes it below all other elements */
+display: block; /* Makes it a full-width box */
+}
+
+/* =========================
+ABOUT MEDIA (VIDEO + PHOTO)
+========================= */
+
+.about-media {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 40px;
+flex-shrink: 0;
+}
+
+.about-video,
+.about-photo {
+width: 360px;
+height: auto;
+max-width: 100%;
+border-radius: 20px;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+object-fit: cover;
+display: block;
+}
+
+/* =========================
+SCENT DETAILS DROPDOWN
+========================= */
+.scent-details {
+margin-top: 20px;
+background: transparent;
+border: 1.5px solid #1a1a1a;
+border-radius: 15px;
+padding: 15px 20px;
+width: 100%;
+max-width: 360px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.scent-details:hover {
+background-color: rgba(26, 26, 26, 0.05);
+}
+
+.scent-details summary {
+font-family: 'Playfair Display', serif;
+font-size: 20px;
+color: #1a1a1a;
+list-style: none;
+text-align: center;
+outline: none;
+}
+
+.scent-details summary::-webkit-details-marker {
+display: none;
+}
+
+.details-content {
+margin-top: 15px;
+padding-top: 15px;
+border-top: 1px solid rgba(26, 26, 26, 0.2);
+text-align: center; /* FIX: Changed from left to center */
+}
+
+.details-content p {
+font-size: 15px;
+line-height: 1.8;
+margin-bottom: 5px;
+}
+
+.scent-details summary::after {
+content: "+";
+float: right;
+font-size: 24px;
+line-height: 1;
+font-weight: 300;
+color: #1a1a1a;
+}
+
+.scent-details[open] summary::after {
+content: "−";
+}
+
+/* =========================
+ABOUT EXTRA (Desktop)
+========================= */
+.about-extra {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 40px;
+padding: 60px;
+color: #1a1a1a;
+border: 2px solid #1a1a1a;
+border-radius: 20px;
+margin: 60px auto;
+width: 90%;
+max-width: 1200px;
+}
+
+.about-extra-text {
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.about-extra-text h2 {
+font-family: 'Playfair Display', serif;
+font-size: 32px;
+margin-bottom: 25px;
+font-weight: 400;
+}
+
+.about-extra-text p {
+font-size: 16px;
+line-height: 1.7;
+margin-bottom: 20px;
+}
+
+.about-extra-image img {
+width: 400px; /* This was the main "breaker" on mobile */
+height: auto;
+border-radius: 20px;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+display: block;
+}
+
+/* --- SOCIAL ICONS (Desktop) --- */
+/* Puts social icons at the bottom of the page, not the screen */
+  .social-footer {
+    position: relative !important; 
+    bottom: auto !important;
+    margin: 40px auto 20px auto !important; /* Adds space above and below */
+    width: 100% !important;
+  }
+
+.icon-circle {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 44px;
+height: 44px;
+border-radius: 50%;
+border: 1.5px solid #b5a499;
+color: #b5a499;
+text-decoration: none;
+margin: 0 10px; /* Balanced space for centering */
+transition: all 0.3s ease;
+font-size: 18px;
+background-color: transparent;
+}
+
+/* =======================================
+PHONE VERSION (700px and below)
+=======================================*/
+@media (max-width: 700px) {
+body {
+overflow-y: auto;
+height: auto;
+}
+
+/* --- HEADER ALIGNMENT (Logo Left, Nav Right) --- */
+.header {
+display: flex !important;
+flex-direction: row !important; /* Forces side-by-side layout */
+justify-content: space-between !important; /* Pushes content to edges */
+align-items: center;
+padding: 15px 20px;
+background-color: #aa9e98;
+width: 100%;
+}
+
+.header .logo {
+font-size: 18px; /* Prevents long names from pushing the nav off-screen */
+padding-bottom: 0;
+text-align: left;
+}
+
+/* Hide the star icon on mobile to save horizontal space */
+.header .logo::before {
+display: none;
+}
+
+.header-right {
+display: flex;
+gap: 12px; /* Balanced spacing for small screens */
+}
+
+.header a {
+font-size: 14px;
+padding-bottom: 2px;
+}
+
+/* --- HOME PAGE HERO FIX --- */
+.hero {
+flex-direction: column;
+gap: 30px;
+padding: 80px 20px 40px 20px;
+text-align: center;
+min-height: auto;
+}
+
+.hero-text {
+max-width: 100%;
+}
+
+.hero-text h1 {
+font-size: 28px;
+margin-bottom: 15px;
+}
+
+.hero-text p {
+font-size: 16px;
+line-height: 1.5;
+}
+
+.main-image {
+width: 90%;
+max-width: 280px;
+margin: 0 auto;
+}
+
+/* --- SOCIAL ICONS MOBILE CONTAINER FIX --- */
+  .social-footer {
+    position: relative; /* Removes the fixed floating behavior */
+    bottom: auto; /* Resets the bottom positioning */
+    padding: 30px 0 50px 0; /* Adds breathing room inside the container */
+    margin-top: 20px; /* Pushes it away from the content above */
+    background-color: #fcf8f5; /* Matches your body background */
+    width: 100%;
+  }
+  
+/* --- ABOUT SECTION & EXTRA BOXES --- */
+.about-extra, .about-hero {
+padding: 30px 20px;
+width: 92%;
+margin: 20px auto;
+gap: 25px;
+min-height: auto;
+}
+
+.about-extra-image img, .about-video, .about-photo {
+width: 100%;
+max-width: 280px;
+margin: 0 auto;
+}
+}
+
+/* --- HEADER MOBILE ALIGNMENT --- */
+.header {
+display: flex !important;
+flex-direction: row !important; /* Forces them to stay side-by-side */
+justify-content: space-between !important; /* Pushes them to opposite ends */
+align-items: center;
+padding: 15px 20px;
+background-color: #aa9e98;
+width: 100%;
+}
+
+.header .logo {
+font-size: 18px; /* Reduced so it doesn't take up the whole row */
+padding-bottom: 0;
+}
+
+.header-right {
+display: flex;
+gap: 15px; /* Tighter spacing for the links */
+}
+
+.header a {
+font-size: 14px; /* Smaller links to ensure they fit next to the name */
+}
+
+/* Remove the star on mobile to save space */
+.header .logo::before {
+display: none;
+}
+
+/* --- GLOBAL BUTTON STYLE --- */
+.main-button, button[type="submit"] {
+display: inline-block;
+padding: 15px 35px;
+font-size: 16px;
+color: #b5a499 !important;
+background: transparent !important;
+border: 2px solid #b5a499 !important;
+border-radius: 50px !important;
+cursor: pointer;
+text-decoration: none;
+}
+
+/* =======================================
+   FINAL PHONE VERSION (Merged & Cleaned)
+   ======================================= */
+@media (max-width: 700px) {
+  
+  /* 1. FIX THE SOCIAL ICONS (Stops them from floating over your face) */
+  .social-footer {
+    position: relative !important; 
+    bottom: auto !important;
+    margin: 40px auto 20px auto !important; 
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* 2. FIX THE VIDEO & PHOTO (Makes them fit any phone width) */
+  .about-video, 
+  .about-photo,
+  .about-extra-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 20px !important;
+  }
+
+  /* 3. CONTACT PAGE FIXES */
+  #contact-container {
+    flex-direction: column !important;
+    gap: 40px !important;
+    margin: 50px auto !important;
+  }
+
+  #contact-container > div {
+    flex: none !important; 
+    width: 100% !important;
+  }
+
+  #contact-container > div:nth-child(1) {
+    order: 1 !important;
+    text-align: center !important;
+  }
+
+  #contact-container h1 {
+    font-size: 2.5rem !important;
+  }
+
+  #contact-container > div:nth-child(2) {
+    order: 2 !important;
+  }
+
+  #contact-form input, 
+  #contact-form textarea {
+    text-align: center !important;
+  }
+
+  .main-button, 
+  button[type="submit"] {
+    width: 60% !important; /* Slightly wider for better thumb access */
+    align-self: center !important; 
+    margin-top: 20px !important; 
+  }
+}
