@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Sara Alshtaewi</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #fcf8f5;"> <div class="header">
+<a href="index.html" class="logo">Sara Alshtaewi</a>
+<div class="header-right">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+</div>
+</div>
+
+<div id="contact-container" style="display: flex; max-width: 1000px; margin: 100px auto; padding: 0 20px; gap: 80px; font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+<div style="flex: 1;">
+<h1 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 3rem; margin-bottom: 20px;">Let's Talk Scents</h1>
+<p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">Whether you want to discuss a potential visual project, collaborate on a fragrance campaign, or simply share your current favorite niche scent, I’d love to hear from you.</p>
+</div>
+<div style="flex: 1;">
+<form id="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 25px;">
+<input type="text" name="name" placeholder="Your Name" required style="padding: 15px 0; border: none; border-bottom: 1px solid #b5a499; background: transparent; font-size: 1rem; font-family: inherit; outline: none;">
+<input type="email" name="_replyto" placeholder="Your Email" required style="padding: 15px 0; border: none; border-bottom: 1px solid #b5a499; background: transparent; font-size: 1rem; font-family: inherit; outline: none;">
+<textarea name="message" placeholder="Your Message" rows="4" required style="padding: 15px 0; border: none; border-bottom: 1px solid #b5a499; background: transparent; font-size: 1rem; font-family: inherit; outline: none; resize: none;"></textarea>
+<button type="submit" class="main-button">Send Message</button>
+</form>
+
+<div id="success-message" style="display: none; padding: 50px 20px; border: 1px solid #b5a499; border-radius: 30px; text-align: center; background: white;">
+<h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #b5a499; margin-bottom: 10px;">Thank You!</h2>
+<p style="line-height: 1.6;">Your message has been sent. <br>I will contact you very soon.</p>
+<br>
+<a href="index.html" style="color: #b5a499; font-weight: 600; text-decoration: none; font-size: 0.9rem;">← RETURN HOME</a>
+</div>
+</div>
+</div>
+
+<script>
+function handleFormSubmit(event) {
+event.preventDefault();
+var form = document.getElementById('contact-form');
+var data = new FormData(event.target);
+fetch(event.target.action, {
+method: form.method,
+body: data,
+headers: { 'Accept': 'application/json' }
+}).then(response => {
+if (response.ok) {
+document.getElementById('contact-form').style.display = 'none';
+document.getElementById('success-message').style.display = 'block';
+} else {
+alert("Oops! There was a problem sending your message.");
+}
+});
+}
+</script>
+</body>
+</html>
