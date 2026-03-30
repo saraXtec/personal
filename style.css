@@ -377,22 +377,25 @@ display: block;
     bottom: auto !important;
     margin: 40px auto 20px auto !important; /* Adds space above and below */
     width: 100% !important;
+    /* Add these two lines to center the icons: */
+    display: flex !important;
+    justify-content: center !important;
   }
 
 .icon-circle {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-width: 44px;
-height: 44px;
-border-radius: 50%;
-border: 1.5px solid #b5a499;
-color: #b5a499;
-text-decoration: none;
-margin: 0 10px; /* Balanced space for centering */
-transition: all 0.3s ease;
-font-size: 18px;
-background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #b5a499;
+  color: #b5a499;
+  text-decoration: none;
+  margin: 0 10px; /* Balanced space for centering */
+  transition: all 0.3s ease;
+  font-size: 18px;
+  background-color: transparent;
 }
 
 /* =======================================
